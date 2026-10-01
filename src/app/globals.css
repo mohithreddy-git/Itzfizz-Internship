@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/*
+ * overflow-x: hidden must live ONLY on <html>, never on <body> too.
+ * Per the CSS Overflow spec, when the root element's own overflow is
+ * "visible", its value is propagated from <body> to the viewport and
+ * <body> itself is treated as "visible" instead. Setting overflow-x on
+ * BOTH elements breaks that propagation: <body> becomes its own
+ * independent scroll container (scrolled via body.scrollTop) instead of
+ * the viewport, which desyncs window.scrollY from the actual scroll
+ * position and silently caps GSAP ScrollTrigger's pinned scroll distance
+ * at roughly half of what the pinned content actually needs.
+ */
+html {
+  overflow-x: hidden;
+}
+
+/* Subtle yellow graph-paper grid over the white hero background. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(245, 223, 77, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 223, 77, 0.55) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
